@@ -4,10 +4,10 @@
 - Just returns a message
 
 ## POST /sendmail
-- Only valid school addresses allowed.
+- Only valid school addresses allowed
 
 ```
-# POST application/json
+// POST application/json
 { 
     "to": "user@server.domain", 
     "subject": "Subject", 

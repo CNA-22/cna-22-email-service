@@ -1,0 +1,14 @@
+@baseUrl=http://cna-email-fw-teaching.rahtiapp.fi/
+
+GET {{baseUrl}}
+
+###
+
+POST {{baseUrl}}/sendmail
+Content-Type: application/json
+
+{ 
+    "to": "fredrik.welander@arcada.fi", 
+    "subject": "Testing rahti mail", 
+    "body": "Testing rahti mail3, success?" 
+}
