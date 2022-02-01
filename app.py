@@ -11,8 +11,8 @@ app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET')
 jwt = JWTManager(app)
 
-#CORS(app) # => allow all!
-#CORS(app, origins=[""]) 
+#CORS(app)    # => allow all! 
+# OBS ingen trailing / på urlar!
 CORS(app, origins=["http://127.0.0.1:5500", "https://people.arcada.fi"])
 
 @app.route("/")
