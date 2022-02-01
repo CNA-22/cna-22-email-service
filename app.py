@@ -13,7 +13,7 @@ jwt = JWTManager(app)
 
 # CORS(app) => allow all!
 #CORS(app, origins=[""]) 
-CORS(app, origins=["http://127.0.0.1:5500"]) 
+CORS(app, origins=["http://127.0.0.1:5500", "https://people.arcada.fi/"])
 
 @app.route("/")
 def index():
