@@ -28,11 +28,6 @@ def send():
     mail_from = os.environ.get('MAIL_FROM')
     mail_to = [req['to']]
 
-
-    # Make sure TO-domain is allowed (skip this step when JWT is implemented)
-    if not mail_to[0].endswith(os.environ.get('ALLOWED_MAILDOMAIN')):
-        return { 'error': 'Forbidden recipient address' }, 403
-
     # Note: "Sender" header is required in the rahti manual
     msg = "From: {}\r\nTo: {}\r\nSender: {}\r\nSubject: {}\r\n\r\n{}".format(
         mail_from, 

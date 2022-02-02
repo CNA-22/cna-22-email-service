@@ -8,7 +8,7 @@ POST {{baseUrl}}/sendmail
 Content-Type: application/json
 
 { 
-    "to": "fredrik.welander@arcada.fi", 
+    "to": "user@maildomain.fi", 
     "subject": "Testing rahti mail", 
     "body": "Testing rahti mail3, success?" 
 }
