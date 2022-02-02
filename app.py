@@ -1,6 +1,7 @@
 import os, smtplib
 from flask import Flask, jsonify, request
 from flask_jwt_extended import jwt_required, JWTManager
+from flask_cors import CORS
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,9 +10,11 @@ app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET')
 jwt = JWTManager(app)
 
+CORS(app, origins=["http://127.0.0.1:5501","https://people.arcada.fi"]) 
+
 @app.route("/")
 def index():
-    ret = {'msg': 'This is the email service.', 'v': 4}
+    ret = {'msg': 'This is the email service.', 'v': 5}
     return ret
 
 @app.route("/sendmail", methods = [ 'POST' ])
