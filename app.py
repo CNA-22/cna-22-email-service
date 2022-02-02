@@ -14,7 +14,7 @@ CORS(app, origins=["http://127.0.0.1:5501","https://people.arcada.fi"])
 
 @app.route("/")
 def index():
-    ret = {'msg': 'This is the email service.', 'v': 5}
+    ret = {'msg': 'This is the email service.', 'v': 6}
     return ret
 
 @app.route("/sendmail", methods = [ 'POST' ])

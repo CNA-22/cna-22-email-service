@@ -4,12 +4,15 @@
 - Just returns a message
 
 ## POST /sendmail
-- Only valid school addresses allowed
+- Valid token required
 
 ```
-// POST application/json
+POST {{baseUrl}}/sendmail
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
 { 
-    "to": "user@server.domain", 
+    "to": "user@maildomain.fi", 
     "subject": "Subject", 
     "body": "Body" 
 }

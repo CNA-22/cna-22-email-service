@@ -1,14 +1,15 @@
 @baseUrl=http://cna-email-fw-teaching.rahtiapp.fi/
-
+@token = "foo"
 GET {{baseUrl}}
 
 ###
 
 POST {{baseUrl}}/sendmail
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 { 
     "to": "user@maildomain.fi", 
     "subject": "Testing rahti mail", 
-    "body": "Testing rahti mail3, success?" 
+    "body": "Testing rahti mail, success?" 
 }

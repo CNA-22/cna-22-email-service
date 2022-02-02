@@ -10,7 +10,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 { 
-    "to": "user@server.domain", 
+    "to": "user@server.fi", 
     "subject": "Subject", 
     "body": "Body" 
 }
