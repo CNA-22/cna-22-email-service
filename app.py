@@ -10,11 +10,13 @@ app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET')
 jwt = JWTManager(app)
 
-CORS(app, origins=["http://127.0.0.1:5501","https://people.arcada.fi"]) 
+CORS(app, origins=["http://127.0.0.1:5501","https://people.arcada.fi"])
 
 @app.route("/")
 def index():
-    ret = {'msg': 'This is the email service.', 'v': 6}
+    ret = {'msg': 'This is the email service.', 
+        'v': 6,
+        'mailfrom': os.environ.get('MAIL_FROM')}
     return ret
 
 @app.route("/sendmail", methods = [ 'POST' ])

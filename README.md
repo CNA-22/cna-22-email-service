@@ -5,6 +5,7 @@
 
 ## POST /sendmail
 - Valid token required
+- SSL (https) only
 
 ```
 POST {{baseUrl}}/sendmail

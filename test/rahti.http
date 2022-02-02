@@ -1,4 +1,4 @@
-@baseUrl=http://cna-email-fw-teaching.rahtiapp.fi/
+@baseUrl=https://cna-email-fw-teaching.rahtiapp.fi
 @token = "foo"
 GET {{baseUrl}}
 
