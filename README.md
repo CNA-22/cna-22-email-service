@@ -18,3 +18,6 @@ Authorization: Bearer {{token}}
     "body": "Body" 
 }
 ```
+
+### Attachments
+- Attachments not supported. Host you file somewhere and include a link in the mail body.
