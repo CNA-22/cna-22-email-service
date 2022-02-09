@@ -1,5 +1,5 @@
 @baseUrl=https://cna-email-fw-teaching.rahtiapp.fi
-@token = "foo"
+@token = "valid-jwt-token-here"
 GET {{baseUrl}}
 
 ###
