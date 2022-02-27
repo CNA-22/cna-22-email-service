@@ -1,7 +1,8 @@
 import os, smtplib
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_jwt_extended import jwt_required, JWTManager
 from flask_cors import CORS
+from flask_swagger_ui import get_swaggerui_blueprint
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,6 +12,16 @@ app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET')
 jwt = JWTManager(app)
 
 CORS(app, origins=["http://127.0.0.1:5501","https://people.arcada.fi"])
+
+""" SWAGGER """
+SWAGGER_URL = '/api-docs'
+SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    '/html/swagger.json'
+)
+app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
+""" /SWAGGER """
+
 
 @app.route("/")
 def index():
@@ -27,7 +38,7 @@ def send():
     ret = {'smtp': os.environ.get('MAIL_SMTP')}
 
     req = request.get_json()
-    mail_from = os.environ.get('MAIL_FROM')
+    mail_from = req['from'] if 'from' in req else os.environ.get('MAIL_FROM')
     mail_to = [req['to']]
 
     # Note: "Sender" header is required in the rahti manual
@@ -37,6 +48,8 @@ def send():
         mail_from, 
         req['subject'], 
         req['body'])
+
+    print(msg)
 
     try:
         smtp_obj = smtplib.SMTP(os.environ.get('MAIL_SMTP'))
@@ -50,6 +63,11 @@ def send():
         ret =  {'error': 'Mail fail.'}, 500
     
     return ret
+
+@app.route('/html/<path:path>')
+def render_static(path):
+    return send_from_directory('html', path)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080, host='0.0.0.0')

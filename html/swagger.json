@@ -1,0 +1,91 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "API for sending email",
+        "version": "1.0",
+        "title": "CNA 22 Email Service"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:5000/"
+        },
+        {
+            "url": "https://cna-email-fw-teaching.rahtiapp.fi"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Book Request",
+            "description": "Example API for requesting and return book requests"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "Test API"
+                ],
+                "summary": "Returns a message",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Send email"
+                ],
+                "summary": "Send simple email message",
+                "requestBody": {
+                    "description": "Request body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/email"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "Mail Fail"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "email": {
+                "type": "object",
+                "properties": {
+                    "to": {
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "from": {
+                        "type": "string",
+                        "format": "string",
+                        "required": false
+                    },                    
+                    "subject": {
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "body": {
+                        "type": "string",
+                        "format": "string"
+                    }
+                }
+            }
+        }
+    }
+}
