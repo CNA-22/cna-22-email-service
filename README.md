@@ -1,5 +1,8 @@
 # Cloud Native Apps 22 Email Service
 
+## API Documentation (Swagger)
+https://cna-email-fw-teaching.rahtiapp.fi/api-docs/
+
 ## GET /
 - Just returns a message
 
@@ -14,6 +17,7 @@ Authorization: Bearer {{token}}
 
 { 
     "to": "user@maildomain.fi", 
+    "from: "sender@maildomain.fi (OPTIONAL)",
     "subject": "Subject", 
     "body": "Body" 
 }
